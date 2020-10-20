@@ -2,6 +2,9 @@
 /KickBan/.env
 /rolebot/node_modules/*
 /rolebot/config/*
+node_modules/
+/config
+/config.local
 
 # Created by https://www.toptal.com/developers/gitignore/api/node
 # Edit at https://www.toptal.com/developers/gitignore?templates=node

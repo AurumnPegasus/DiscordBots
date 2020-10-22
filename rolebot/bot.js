@@ -15,18 +15,28 @@ client.on('message', (message) => {
     if(message.author.bot || !message.content.startsWith(PREFIX))
         return;
     
-    const COMMAND = message.content.trim().substring(0, message.content.indexOf(" ")).substring(PREFIX.length);
-    let args = message.content.trim().substring(COMMAND.length + 1).split(",");
-    let roleSet = new Set(args);
-    if (COMMAND === 'add')
+    let command, roleSet, args;
+    if(message.content.indexOf(" ") <= 0)
+        command = message.content.trim().substring(PREFIX.length);
+    else
+    {
+        command = message.content.trim().substring(0, message.content.indexOf(" ")).substring(PREFIX.length);
+        args = message.content.trim().substring(command.length + 1).split(",");
+        roleSet = new Set(args);
+    }
+    if (command === 'add')
     {
         message.reply("Updates about the roles");
         roleSet.forEach(roleName => addRole(message, roleName));
     }
-    else if(COMMAND === 'remove')
+    else if(command === 'remove')
     {
         message.reply("Updates about the roles");
         roleSet.forEach(roleName => removeRole( message, roleName));
+    }
+    else if(command === 'help')
+    {
+        helpMe(message);
     }
 });
 
@@ -60,4 +70,18 @@ function removeRole(message, args){
     }
     else 
         return message.channel.send(`${args} role does not exist`);
+}
+
+function helpMe(message){
+    let embedContent = " Hey, I head you asked for help :) \n" + 
+    "This is a fairly simple bot to use \n" + " There are three commands \n"
+    + "?add <Role1> <Role2> .. \n" + "This will allocate you the mentioned role \n" + 
+    "?remove <Role1> <Role2> .. \n" + " This will remove mentioned role from you \n" + 
+    "?help \n" + "This will bring you here :)" 
+    let embed = {
+        title: "Help Message",
+        description: embedContent,
+        color: '3C35E9',
+    };
+    message.channel.send({ embed: embed});
 }

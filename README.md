@@ -6,3 +6,5 @@ I have used javascript here because Discord.js is amazinggggg and I wanted to pr
 KickBan: A bot which kicks or bans user based on the users tagged. Watched a tutorial for it :p ;-; https://www.youtube.com/watch?v=BmKXBVdEV0g
 
 rolebot: A bot which adds or removes specified roles from the user. Added dynamic help messages in it :)
+
+tagbot: A bot which accepts two arguments and tags them given amount of times.

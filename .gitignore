@@ -1,7 +1,3 @@
-/KickBan/node_modules/*
-/KickBan/.env
-/rolebot/node_modules/*
-/rolebot/config/*
 node_modules/
 /config
 /config.local

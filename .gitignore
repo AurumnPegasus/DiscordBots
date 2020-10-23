@@ -1,8 +1,9 @@
-KickBan/.env
-rolebot/config/
-rolebot/config.json
-tagbot/config
-tagbot/config.json
+/KickBan/node_modules/*
+/KickBan/.env
+/rolebot/node_modules/*
+/rolebot/config/*
+/tagbot/config/*
+/tagbot/node_modules/*
 node_modules/
 /config
 /config.local

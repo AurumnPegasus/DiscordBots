@@ -10,12 +10,15 @@ module.exports = {
 }
 
 function callName(message, name, number){
+    name = name.trim();
     let userID = name.trim().substring(3);
     let char = name.trim().charAt(2);
     userID = userID.substring(0, userID.length - 1);
     let reply;
     if( userID.length > 0 && (message.guild.member(userID) || message.guild.roles.cache.find(role => role.id === userID)))
         reply =  getString(userID, char, number);
+    else if(name.trim() === "@everyone" || name.trim() === "@here")
+        reply = getSpecficString(name.trim(), number);
     else
         return message.channel.send("No such username or role exists");
     if(reply.length <= 1950)
@@ -34,3 +37,10 @@ function getString(ID, char, number){
         reply += " " + username;
     return reply;
 } 
+
+function getSpecficString(name, number){
+    let reply = " ";
+    for(let i=0;i<number;i++)
+        reply += " " + name;
+    return reply;
+}
